@@ -1,0 +1,28 @@
+name: deep-learning-env
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - notebook
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cudatoolkit=11.8   # Match this with your GPU CUDA version
+  - tensorflow
+  - keras
+  - pip:
+      - transformers
+      - datasets
+      - sentencepiece
+      - opencv-python
+      - tqdm
+      - wandb
