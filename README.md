@@ -10,7 +10,7 @@ HVIface tutorial
 
 3-	Predict the pairwise interactions using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
 
-4-	Follow the CoRneA tutorial for the “Post processing for prediction results obtained from ANN prediction”.
+4-	Follow the CoRNeA tutorial for the “Post processing for prediction results obtained from ANN prediction”.
 
 5-	Get the pairwise interaction in CSV format. You can sort the pairwise interactions with the convolution scores.
 
