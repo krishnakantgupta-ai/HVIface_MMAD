@@ -141,3 +141,8 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(y_test, y_pred))
 
 print("\nROC-AUC Score:", roc_auc_score(y_test, y_pred_prob))
+
+#SAVE THE MODEL AND LOAD IT FOR THE PREDICTION
+
+model.save("Desktop/ANN_model_oversampling_15_04_2024_testing_7bestfeatures.keras")
+model.save_weights("ANN_model_oversampling.weights.h5")
