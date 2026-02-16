@@ -17,7 +17,7 @@ from keras.callbacks import EarlyStopping
 # 2. LOAD ALL COMPLEX FILES (BUT DONT CONCATENATE)
 
 
-data_folder = "YOUR_FOLDER_PATH HAVING CSV FILES"   # <-- change this
+data_folder = "/Users/krishnagupta/Desktop/updated_training_file/"   # <-- change this where your csv files are present
 file_list = [os.path.join(data_folder, f) for f in os.listdir(data_folder) if f.endswith(".csv")]
 
 all_data = []
