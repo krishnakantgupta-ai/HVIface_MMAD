@@ -43,7 +43,8 @@ unique_complexes = df_all["complex_id"].unique()
 train_complexes, test_complexes = train_test_split(
     unique_complexes,
     test_size=0.2,
-    random_state=42
+    random_state=42,
+    shuffle= True
 )
 
 train_df = df_all[df_all["complex_id"].isin(train_complexes)]
