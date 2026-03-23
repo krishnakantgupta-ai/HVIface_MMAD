@@ -249,9 +249,9 @@ model.save_weights("ANN_model_oversampling.weights.h5")
 #For LOFO (Leave one family out) you can add Virus family at the beginning of CSV file.
 
 
-# ============================================
+
 # 1. IMPORT LIBRARIES
-# ============================================
+
 import os
 import numpy as np
 import pandas as pd
@@ -271,17 +271,17 @@ from keras.callbacks import EarlyStopping
 
 np.random.seed(42)
 
-# ============================================
+
 # 2. PATH
-# ============================================
+
 data_folder = "/Users/krishnagupta/Desktop/updated_training_file/"
 file_list = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
 
 print("Total complexes:", len(file_list))
 
-# ============================================
+
 # 3. AUTO FAMILY MAPPING FROM FILENAME
-# ============================================
+
 def get_family(filename):
     prefix = filename.split("_")[0].upper()
 
@@ -298,9 +298,9 @@ family_map = {f: get_family(f) for f in file_list}
 
 print("Detected families:", set(family_map.values()))
 
-# ============================================
+
 # 4. FEATURES
-# ============================================
+
 feature_cols = [
     "cmi.m$value","cc.m$value","cp.m$value","cp1.m$value",
     "cp2.m$value","hcm.m$value","rsa.m$value","scm.m$value",
@@ -311,9 +311,9 @@ feature_cols = [
 
 target_col = "inf.m$value"
 
-# ============================================
+
 # 5. MODEL
-# ============================================
+
 def build_model():
     model = Sequential([
         Dense(32, activation='relu', input_dim=18),
@@ -327,9 +327,9 @@ def build_model():
                   metrics=['accuracy'])
     return model
 
-# ============================================
+
 # 6. TRAIN FUNCTION
-# ============================================
+
 def train_model(train_files, test_files):
 
     train_df = pd.concat([
@@ -375,9 +375,9 @@ def train_model(train_files, test_files):
 
     return acc, auc, y_test, y_prob, model, scaler
 
-# ============================================
+
 # 7. SINGLE SPLIT (ROC + SAVE MODEL)
-# ============================================
+
 print("\n===== SINGLE SPLIT =====")
 
 file_array = np.array(file_list)
@@ -407,9 +407,9 @@ os.makedirs("saved_model", exist_ok=True)
 model.save("saved_model/HVIface_model.keras")
 joblib.dump(scaler, "saved_model/scaler.pkl")
 
-# ============================================
+
 # 8. 10-FOLD CV
-# ============================================
+
 print("\n===== 10-FOLD CV =====")
 
 kf = KFold(n_splits=10, shuffle=True, random_state=42)
@@ -436,9 +436,9 @@ mean_row = pd.DataFrame([[
 cv_table = pd.concat([cv_df, mean_row], ignore_index=True)
 cv_table.to_csv("results/Table1_CV.csv", index=False)
 
-# ============================================
-# 9. STRICT LOFO (BY PREFIX)
-# ============================================
+
+# 9. STRICT LOFO (BY PREFIX VIRUS FAMILY IN CSV FILENAME)
+
 print("\n===== LOFO (BY FILENAME PREFIX) =====")
 
 families = sorted(set(family_map.values()))
@@ -465,9 +465,9 @@ lofo_df = pd.DataFrame(lofo_results,
 
 lofo_df.to_csv("results/Table2_LOFO.csv", index=False)
 
-# ============================================
+
 # 10. PRINT TABLES
-# ============================================
+
 print("\n===== TABLE 1: CV =====")
 print(cv_table)
 
