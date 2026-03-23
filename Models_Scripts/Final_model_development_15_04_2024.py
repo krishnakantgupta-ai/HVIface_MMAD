@@ -248,15 +248,16 @@ model.save_weights("ANN_model_oversampling.weights.h5")
 
 #For LOFO (Leave one family out) you can add Virus family at the beginning of CSV file.
 
-
-
 # 1. IMPORT LIBRARIES
 
+
 import os
+import warnings
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
+import tensorflow as tf
 
 from sklearn.model_selection import KFold, train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -265,14 +266,22 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from imblearn.over_sampling import SMOTE
 
 from keras.models import Sequential
-from keras.layers import Dense, Dropout
+from keras.layers import Dense, Dropout, Input
 from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
 
+# Suppress warnings (optional)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning)
+
+# Reproducibility
 np.random.seed(42)
+tf.random.set_seed(42)
 
 
-# 2. PATH
+
+# 2. PATH & FILES
+
 
 data_folder = "/Users/krishnagupta/Desktop/updated_training_file/"
 file_list = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
@@ -280,7 +289,9 @@ file_list = [f for f in os.listdir(data_folder) if f.endswith(".csv")]
 print("Total complexes:", len(file_list))
 
 
-# 3. AUTO FAMILY MAPPING FROM FILENAME
+
+# 3. FAMILY MAPPING FROM FILENAME
+
 
 def get_family(filename):
     prefix = filename.split("_")[0].upper()
@@ -295,11 +306,12 @@ def get_family(filename):
         return "Other"
 
 family_map = {f: get_family(f) for f in file_list}
-
 print("Detected families:", set(family_map.values()))
 
 
+
 # 4. FEATURES
+
 
 feature_cols = [
     "cmi.m$value","cc.m$value","cp.m$value","cp1.m$value",
@@ -312,33 +324,38 @@ feature_cols = [
 target_col = "inf.m$value"
 
 
-# 5. MODEL
+
+# 5. MODEL (FIXED)
+
 
 def build_model():
     model = Sequential([
-        Dense(32, activation='relu', input_dim=18),
+        Input(shape=(len(feature_cols),)),  
+        Dense(32, activation='relu'),
         Dropout(0.5),
         Dense(16, activation='relu'),
         Dropout(0.5),
         Dense(1, activation='sigmoid')
     ])
-    model.compile(loss='binary_crossentropy',
-                  optimizer=Adam(0.001),
-                  metrics=['accuracy'])
+
+    model.compile(
+        loss='binary_crossentropy',
+        optimizer=Adam(learning_rate=0.001),
+        metrics=['accuracy']
+    )
+
     return model
+
 
 
 # 6. TRAIN FUNCTION
 
+
 def train_model(train_files, test_files):
 
-    train_df = pd.concat([
-        pd.read_csv(os.path.join(data_folder, f)) for f in train_files
-    ])
-
-    test_df = pd.concat([
-        pd.read_csv(os.path.join(data_folder, f)) for f in test_files
-    ])
+    # Load data
+    train_df = pd.concat([pd.read_csv(os.path.join(data_folder, f)) for f in train_files])
+    test_df  = pd.concat([pd.read_csv(os.path.join(data_folder, f)) for f in test_files])
 
     X_train = train_df[feature_cols]
     y_train = train_df[target_col]
@@ -346,7 +363,7 @@ def train_model(train_files, test_files):
     X_test = test_df[feature_cols]
     y_test = test_df[target_col]
 
-    # SMOTE
+    # SMOTE (ONLY on training)
     sm = SMOTE(random_state=42)
     X_train_res, y_train_res = sm.fit_resample(X_train, y_train)
 
@@ -355,9 +372,14 @@ def train_model(train_files, test_files):
     X_train_res = scaler.fit_transform(X_train_res)
     X_test = scaler.transform(X_test)
 
+    # Model
     model = build_model()
 
-    early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+    early_stop = EarlyStopping(
+        monitor='val_loss',
+        patience=5,
+        restore_best_weights=True
+    )
 
     model.fit(
         X_train_res, y_train_res,
@@ -368,26 +390,36 @@ def train_model(train_files, test_files):
         verbose=0
     )
 
+    # Evaluation
     loss, acc = model.evaluate(X_test, y_test, verbose=0)
-    y_prob = model.predict(X_test)
+
+    # FIXED SHAPE
+    y_prob = model.predict(X_test).ravel()
 
     auc = roc_auc_score(y_test, y_prob)
 
     return acc, auc, y_test, y_prob, model, scaler
 
 
-# 7. SINGLE SPLIT (ROC + SAVE MODEL)
+
+# 7. SINGLE SPLIT + ROC + SAVE
+
 
 print("\n===== SINGLE SPLIT =====")
 
 file_array = np.array(file_list)
-train_files, test_files = train_test_split(file_array, test_size=0.2, random_state=42)
+
+train_files, test_files = train_test_split(
+    file_array,
+    test_size=0.2,
+    random_state=42
+)
 
 acc, auc, y_test, y_prob, model, scaler = train_model(train_files, test_files)
 
 print(f"Accuracy: {acc:.4f}, AUC: {auc:.4f}")
 
-# ROC
+# ROC Curve
 fpr, tpr, _ = roc_curve(y_test, y_prob)
 
 os.makedirs("results", exist_ok=True)
@@ -395,20 +427,22 @@ os.makedirs("results", exist_ok=True)
 plt.figure()
 plt.plot(fpr, tpr, label=f"AUC = {auc:.3f}")
 plt.plot([0,1],[0,1],'--')
-plt.xlabel("FPR")
-plt.ylabel("TPR")
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
 plt.title("ROC Curve")
 plt.legend()
 plt.savefig("results/roc_curve.png", dpi=300)
 plt.close()
 
-# Save model
+# Save model & scaler
 os.makedirs("saved_model", exist_ok=True)
 model.save("saved_model/HVIface_model.keras")
 joblib.dump(scaler, "saved_model/scaler.pkl")
 
 
-# 8. 10-FOLD CV
+
+# 8. 10-FOLD CROSS VALIDATION
+
 
 print("\n===== 10-FOLD CV =====")
 
@@ -437,16 +471,18 @@ cv_table = pd.concat([cv_df, mean_row], ignore_index=True)
 cv_table.to_csv("results/Table1_CV.csv", index=False)
 
 
-# 9. STRICT LOFO (BY PREFIX VIRUS FAMILY IN CSV FILENAME)
 
-print("\n===== LOFO (BY FILENAME PREFIX) =====")
+# 9. LOFO (BY VIRUS FAMILY)
+
+
+print("\n===== LOFO (BY FAMILY) =====")
 
 families = sorted(set(family_map.values()))
 lofo_results = []
 
 for fam in families:
 
-    test_files = [f for f in file_list if family_map[f] == fam]
+    test_files  = [f for f in file_list if family_map[f] == fam]
     train_files = [f for f in file_list if family_map[f] != fam]
 
     if len(test_files) < 2:
@@ -454,19 +490,23 @@ for fam in families:
         continue
 
     print(f"\nTesting family: {fam}")
-    print(f"Train: {len(train_files)} | Test: {len(test_files)} complexes")
+    print(f"Train: {len(train_files)} | Test: {len(test_files)}")
 
     acc, auc, _, _, _, _ = train_model(train_files, test_files)
 
     lofo_results.append([fam, len(test_files), acc, auc])
 
-lofo_df = pd.DataFrame(lofo_results,
-                       columns=["Viral Family", "Test Complexes", "Accuracy", "ROC-AUC"])
+lofo_df = pd.DataFrame(
+    lofo_results,
+    columns=["Viral Family", "Test Complexes", "Accuracy", "ROC-AUC"]
+)
 
 lofo_df.to_csv("results/Table2_LOFO.csv", index=False)
 
 
-# 10. PRINT TABLES
+
+# 10. PRINT RESULTS
+
 
 print("\n===== TABLE 1: CV =====")
 print(cv_table)
