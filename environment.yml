@@ -16,7 +16,7 @@ dependencies:
   - pytorch
   - torchvision
   - torchaudio
-  - cudatoolkit=11.8   # Match this with your GPU CUDA version
+                 # Match this with your GPU CUDA version (- cudatoolkit=11.8,
   - tensorflow
   - keras
   - pip:
