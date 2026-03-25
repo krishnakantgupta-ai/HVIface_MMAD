@@ -116,7 +116,7 @@ Follow the **CoRNeA tutorial** for post-processing steps:
 - Designed specifically for **human–virus protein interaction interfaces**
 
 ---
-## 📩 Contact
+## Contact
 
 If you have any questions, suggestions, or inquiries, feel free to reach out:
 
