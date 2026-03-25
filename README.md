@@ -4,7 +4,7 @@ HVIface is a deep learning framework designed to predict interaction interfaces 
 
 ---
 
-## 📘 HVIface Tutorial
+## HVIface Tutorial
 
 Follow the steps below to perform interface prediction:
 
@@ -43,14 +43,14 @@ Follow the **CoRNeA tutorial** for post-processing steps:
 
 ---
 
-## 📂 Additional Resources
+## Additional Resources
 
 - Validation data:  
   https://github.com/krishnakantgupta-ai/HVIface_MMAD/tree/main/Validation
 
 ---
 
-## 📝 Notes
+## Notes
 
 - The model uses **SMOTE-based imbalance handling**
 - Training incorporates **early stopping for optimal performance**
