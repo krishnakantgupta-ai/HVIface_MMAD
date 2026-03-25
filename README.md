@@ -3,6 +3,64 @@
 HVIface is a deep learning framework designed to predict interaction interfaces between two protein sequences in human–virus systems.
 
 ----
+## 🧬 HVIface: Human–Virus Interaction Interface Predictor
+
+**HVIface** is a deep learning–based framework designed to predict **interaction interfaces** between two protein sequences in human–virus systems.  
+It identifies which residues in each protein are most likely to participate in binding, enabling better understanding of host–pathogen interactions.
+
+---
+
+### 🔍 Overview
+
+HVIface takes two protein sequences as input and predicts their potential interaction sites using trained deep learning models.
+
+---
+
+### ⚙️ Workflow
+
+![HVIface Workflow](https://via.placeholder.com/800x250.png?text=Sequence+Input+→+Feature+Extraction+→+Deep+Learning+Model+→+Interface+Prediction)
+
+1. **Input Sequences**  
+   - Human protein sequence  
+   - Viral protein sequence  
+
+2. **Feature Extraction**  
+   - Physicochemical properties  
+   - Evolutionary information (PSSM, etc.)  
+   - Structural predictions  
+
+3. **Deep Learning Model**  
+   - Learns interaction patterns from known protein complexes  
+
+4. **Prediction Output**  
+   - Residue-level interaction interface  
+   - Binding probability scores  
+
+---
+
+### Model Insight
+
+![Model Architecture](https://via.placeholder.com/600x250.png?text=Feature+Matrix+→+Neural+Network+→+Interface+Map)
+
+- Uses advanced neural networks to capture sequence–interaction relationships  
+- Predicts **interface residues** rather than just binary interaction  
+
+---
+
+### Applications
+
+- Host–virus interaction studies  
+- Drug target identification  
+- Vaccine design  
+- Functional annotation of proteins  
+
+---
+
+### Key Advantage
+
+Unlike traditional methods, **HVIface** focuses on **residue-level interface prediction**, providing deeper biological insights into protein–protein interactions.
+
+---
 
 ## HVIface Tutorial
 
