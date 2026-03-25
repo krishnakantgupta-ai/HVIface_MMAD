@@ -116,9 +116,23 @@ Follow the **CoRNeA tutorial** for post-processing steps:
 - Designed specifically for **human–virus protein interaction interfaces**
 
 ---
-## Contact
+## 📩 Contact
 
 If you have any questions, suggestions, or collaboration inquiries, feel free to reach out:
 
-- 📧 radha75@gmail.com  
-- 📧 biokkscience@gmail.com  
+---
+
+### 👩‍🔬 Dr. Radha Chauhan  
+**Scientist 'F' | Lab 02**  
+National Centre for Cell Science (NCCS), India  
+📧 radha.chauhan@nccs.res.in  
+🔗 [Lab Website](https://sites.google.com/view/radhachauhanlab/home?authuser=3)
+
+---
+
+### 👨‍🔬 Dr. Krishna Kant Gupta  
+**MK Bhan Young Scientist Fellow | Lab 02**  
+National Centre for Cell Science (NCCS), India  
+📧 biokkscience@gmail.com
+
+---
