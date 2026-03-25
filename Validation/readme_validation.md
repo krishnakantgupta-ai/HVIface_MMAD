@@ -1,4 +1,13 @@
-Structures are colored by pLDDT using a red–blue gradient (50–90).
-To further evaluate the structural reliability of the modelled host–virus complexes, we assessed the AlphaFold-predicted structures using per-residue confidence scores (pLDDT). The majority of residues involved in the predicted interaction interfaces correspond to moderate-to-high confidence regions, as indicated by pLDDT-based color mapping (ranging from yellow to blue). For visualization, pLDDT values were mapped onto the structures using a continuous color spectrum (red–yellow–green–cyan–blue; minimum = 50, maximum = 90; pymol command: spectrum b, red_yellow_green_cyan_blue, minimum=50, maximum=90), allowing clear interpretation of structural confidence across the docked complexes.
-Notably, the interface residues identified by HVIface consistently localized within structurally well-defined regions of the proteins. In addition, the docked complexes generated using HDOCK showed strong agreement with the HVIface-predicted interface residues across all case studies, including LASP1–NS5A, Nup85–PB1, and Nup62–Integrase systems. The convergence of sequence-based predictions, docking-derived geometries, and structural confidence metrics further reinforces the reliability of the identified interaction interfaces.
+## Structural Confidence and Validation of Predicted Complexes
 
+Structures are colored by pLDDT using a red–blue gradient (50–90).
+
+To evaluate the structural reliability of the modelled host–virus complexes, we assessed AlphaFold-predicted structures using per-residue confidence scores (pLDDT). The majority of residues involved in the predicted interaction interfaces correspond to moderate-to-high confidence regions, as indicated by pLDDT-based color mapping (ranging from yellow to blue).
+
+For visualization, pLDDT values were mapped onto the structures using a continuous color spectrum:
+
+- **Color scheme:** red–yellow–green–cyan–blue  
+- **Range:** minimum = 50, maximum = 90  
+- **PyMOL command:**
+```python
+spectrum b, red_yellow_green_cyan_blue, minimum=50, maximum=90
