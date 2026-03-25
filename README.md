@@ -11,13 +11,13 @@ It identifies which residues in each protein are most likely to participate in b
 
 ---
 
-### 🔍 Overview
+### Overview
 
 HVIface takes two protein sequences as input and predicts their potential interaction sites using trained deep learning models.
 
 ---
 
-### ⚙️ Workflow
+### Workflow
 
 
 
@@ -116,3 +116,9 @@ Follow the **CoRNeA tutorial** for post-processing steps:
 - Designed specifically for **human–virus protein interaction interfaces**
 
 ---
+## Contact
+
+If you have any questions, suggestions, or collaboration inquiries, feel free to reach out:
+
+- 📧 radha75@gmail.com  
+- 📧 biokkscience@gmail.com  
