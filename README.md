@@ -76,10 +76,10 @@ Refer to the **CoRNeA tutorial** for detailed instructions:
 
 ### 2. Load the Trained Model
 Load the pre-trained model:
-- `HVIface_model.keras`
+- `HVIface_model.keras` (HVIface_MMAD/Models_Scripts)
 
 Use the provided notebook:
-- `ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb`
+- `ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb` (HVIface_MMAD/Models_Scripts)
 
 ---
 
