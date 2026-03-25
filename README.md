@@ -6,7 +6,7 @@ HVIface tutorial
 
 1-	Compile 18 features for any two protein sequences (follow the “CoRNeA_tutorial.pdf”).
 
-2-	Load the trained model “._ANN_model_oversampling_15_04_2024_testing.keras” using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
+2-	Load the trained model “HVIface_model.keras” using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
 
 3-	Predict the pairwise interactions using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
 
