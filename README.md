@@ -18,7 +18,7 @@ HVIface takes two protein sequences as input and predicts their potential intera
 
 ### ⚙️ Workflow
 
-![HVIface Workflow](https://via.placeholder.com/800x250.png?text=Sequence+Input+→+Feature+Extraction+→+Deep+Learning+Model+→+Interface+Prediction)
+
 
 1. **Input Sequences**  
    - Human protein sequence  
@@ -40,7 +40,7 @@ HVIface takes two protein sequences as input and predicts their potential intera
 
 ### Model Insight
 
-![Model Architecture](https://via.placeholder.com/600x250.png?text=Feature+Matrix+→+Neural+Network+→+Interface+Map)
+
 
 - Uses advanced neural networks to capture sequence–interaction relationships  
 - Predicts **interface residues** rather than just binary interaction  
