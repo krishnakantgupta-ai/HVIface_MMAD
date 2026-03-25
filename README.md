@@ -118,11 +118,11 @@ Follow the **CoRNeA tutorial** for post-processing steps:
 ---
 ## 📩 Contact
 
-If you have any questions, suggestions, or collaboration inquiries, feel free to reach out:
+If you have any questions, suggestions, or inquiries, feel free to reach out:
 
 ---
 
-### 👩‍🔬 Dr. Radha Chauhan  
+### Dr. Radha Chauhan  
 **Scientist 'F' | Lab 02 New Building**  
 National Centre for Cell Science (NCCS), India  
 📧 radha.chauhan@nccs.res.in  
@@ -130,7 +130,7 @@ National Centre for Cell Science (NCCS), India
 
 ---
 
-### 👨‍🔬 Dr. Krishna Kant Gupta  
+### Dr. Krishna Kant Gupta  
 **MK Bhan Young Scientist Fellow | Lab 02 New Building**  
 National Centre for Cell Science (NCCS), India  
 📧 biokkscience@gmail.com
