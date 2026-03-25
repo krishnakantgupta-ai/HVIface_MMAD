@@ -8,6 +8,6 @@ For visualization, pLDDT values were mapped onto the structures using a continuo
 
 - **Color scheme:** red–yellow–green–cyan–blue  
 - **Range:** minimum = 50, maximum = 90  
-- **PyMOL command:**
+**PyMOL command:**
 ```python
 spectrum b, red_yellow_green_cyan_blue, minimum=50, maximum=90
