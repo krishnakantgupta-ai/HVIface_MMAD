@@ -1,16 +1,59 @@
 # HVIface_MMAD
 
-It predicts the interaction interface between 2 protein sequences of Human-Virus
+HVIface is a deep learning framework designed to predict interaction interfaces between two protein sequences in human–virus systems.
 
-HVIface tutorial
+---
 
-1-	Compile 18 features for any two protein sequences (follow the “CoRNeA_tutorial.pdf”).
+## 📘 HVIface Tutorial
 
-2-	Load the trained model “HVIface_model.keras” using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
+Follow the steps below to perform interface prediction:
 
-3-	Predict the pairwise interactions using “ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb”.
+### 1. Feature Generation
+Compile 18 features for the two input protein sequences.  
+Refer to the **CoRNeA tutorial** for detailed instructions:
+- `CoRNeA_tutorial.pdf`
 
-4-	Follow the CoRNeA tutorial for the “Post processing for prediction results obtained from ANN prediction”.
+---
 
-5-	Get the pairwise interaction in CSV format. You can sort the pairwise interactions with the convolution scores.
+### 2. Load the Trained Model
+Load the pre-trained model:
+- `HVIface_model.keras`
 
+Use the provided notebook:
+- `ANN_Oversampling_under_testing_final_18_06_2024-Copy1.ipynb`
+
+---
+
+### 3. Perform Prediction
+Run the notebook to predict pairwise residue interactions between the two protein sequences.
+
+---
+
+### 4. Post-processing
+Follow the **CoRNeA tutorial** for post-processing steps:
+- Filtering predictions  
+- Generating interaction networks  
+- Refining interface residues  
+
+---
+
+### 5. Output
+- The predicted pairwise interactions are generated in **CSV format**
+- Results can be sorted based on **convolution scores** to identify high-confidence interactions
+
+---
+
+## 📂 Additional Resources
+
+- Validation data:  
+  https://github.com/krishnakantgupta-ai/HVIface_MMAD/tree/main/Validation
+
+---
+
+## 📝 Notes
+
+- The model uses **SMOTE-based imbalance handling**
+- Training incorporates **early stopping for optimal performance**
+- Designed specifically for **human–virus protein interaction interfaces**
+
+---
