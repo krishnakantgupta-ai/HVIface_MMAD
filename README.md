@@ -3,7 +3,7 @@
 HVIface is a deep learning framework designed to predict interaction interfaces between two protein sequences in human–virus systems.
 
 ----
-## <img width="300" height="317" alt="image" src="https://github.com/user-attachments/assets/9217ebc4-2b8d-4fd0-99b0-a1695cb1b912" />
+## <img width="300" height="317" alt="image" src="Human_Virus_PPI.png" />
  HVIface: Human–Virus Interaction Interface Predictor
 
 **HVIface** is a deep learning–based framework designed to predict **interaction interfaces** between two protein sequences in human–virus systems.  
