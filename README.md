@@ -123,7 +123,7 @@ If you have any questions, suggestions, or collaboration inquiries, feel free to
 ---
 
 ### 👩‍🔬 Dr. Radha Chauhan  
-**Scientist 'F' | Lab 02**  
+**Scientist 'F' | Lab 02 New Building**  
 National Centre for Cell Science (NCCS), India  
 📧 radha.chauhan@nccs.res.in  
 🔗 [Lab Website](https://sites.google.com/view/radhachauhanlab/home?authuser=3)
@@ -131,7 +131,7 @@ National Centre for Cell Science (NCCS), India
 ---
 
 ### 👨‍🔬 Dr. Krishna Kant Gupta  
-**MK Bhan Young Scientist Fellow | Lab 02**  
+**MK Bhan Young Scientist Fellow | Lab 02 New Building**  
 National Centre for Cell Science (NCCS), India  
 📧 biokkscience@gmail.com
 🔗 [ORCID](https://orcid.org/0000-0002-4703-6452)
