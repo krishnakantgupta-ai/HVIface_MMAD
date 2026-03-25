@@ -70,7 +70,7 @@ Follow the steps below to perform interface prediction:
 ### 1. Feature Generation
 Compile 18 features for the two input protein sequences.  
 Refer to the **CoRNeA tutorial** for detailed instructions:
-- `CoRNeA_tutorial.pdf`
+- `CoRNeA_tutorial.pdf` (HVIface_MMAD/Tutorial/)
 
 ---
 
